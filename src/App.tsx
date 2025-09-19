@@ -14,6 +14,8 @@ import type { Database } from './lib/supabase';
 
 type Product = Database['public']['Tables']['products']['Row'];
 
+const ADMIN_UUID = "985bf01b-51b4-45c1-bc1d-2a7cf6ba460c"; // your Supabase user ID
+
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -73,6 +75,24 @@ function App() {
 
     if (!user) {
       return <AdminLogin onNavigate={handleNavigate} />;
+    }
+
+    // ✅ Check if user is the admin
+    if (user.id !== ADMIN_UUID) {
+      return (
+        <div className="min-h-screen flex items-center justify-center text-center p-6">
+          <p className="text-red-600 font-semibold">
+            Access Denied<br />
+            You don&apos;t have permission to access the admin dashboard.
+          </p>
+          <button
+            className="mt-4 text-blue-600 underline"
+            onClick={() => handleNavigate('home')}
+          >
+            Go to Home
+          </button>
+        </div>
+      );
     }
 
     return <AdminDashboard user={user} onNavigate={handleNavigate} />;

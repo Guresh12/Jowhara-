@@ -243,10 +243,12 @@ const logAdminActivity = async (
 export const useProductsWithRelations = () => {
   return useSupabaseData('products', {
     realtime: true,
+    filter: { active: true },
     joins: [
       'categories!products_category_id_fkey(name, slug)',
       'brands!products_brand_id_fkey(name, slug)'
-    ]
+    ],
+    orderBy: { column: 'created_at', ascending: false }
   });
 };
 
@@ -261,6 +263,7 @@ export const useOrdersWithCustomers = () => {
 export const useBannersWithCategories = () => {
   return useSupabaseData('banners', {
     realtime: true,
+    filter: { active: true },
     joins: ['categories!banners_category_id_fkey(name, slug)'],
     orderBy: { column: 'sort_order', ascending: true }
   });

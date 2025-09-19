@@ -1,10 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://tgquiihnjasgxenltzcd.supabase.co';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRncXVpaWhuamFzZ3hlbmx0emNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyODI4OTUsImV4cCI6MjA3Mzg1ODg5NX0.Tg-LU5GCufExbXEgRr9JIWNDDnGdRytPGuI0VPDizaY';
 
-// Create client with placeholders to prevent app crash
-// Note: Real Supabase credentials need to be provided for full functionality
+// Create Supabase client with real credentials
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Enhanced Database types with new schema

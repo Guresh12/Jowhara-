@@ -116,11 +116,11 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onBack, onViewProduc
               </div>
             )}
 
-            {product.usage && (
+            {product.usage_instructions && (
               <div className="border-t border-gray-200 pt-6">
                 <h3 className="text-lg font-semibold text-black mb-3">How to Use</h3>
                 <p className="text-gray-600">
-                  {product.usage}
+                  {product.usage_instructions}
                 </p>
               </div>
             )}
